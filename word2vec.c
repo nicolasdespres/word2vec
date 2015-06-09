@@ -362,6 +362,8 @@ void ReadVocab() {
     fscanf(fin, "%lld%c", &vocab[a].cn, &c);
     i++;
   }
+  fclose(fin);
+  fin = NULL;
   SortVocab();
   if (debug_mode > 0) {
     printf("Vocab size: %lld\n", vocab_size);
