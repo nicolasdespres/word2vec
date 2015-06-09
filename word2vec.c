@@ -439,15 +439,21 @@ void InitNet()
 {
   long long a, b;
   unsigned long long next_random = 1;
-  a = posix_memalign((void **)&syn0, 128,
-                     (long long)vocab_size * layer1_size * sizeof(real));
+  if (!posix_memalign((void **)&syn0, 128,
+                      (long long)vocab_size * layer1_size * sizeof(real))) {
+    perror("posix_memalign: ");
+    exit(1);
+  }
   if (syn0 == NULL) {
     printf("Memory allocation failed\n");
     exit(1);
   }
   if (hs) {
-    a = posix_memalign((void **)&syn1, 128,
-                       (long long)vocab_size * layer1_size * sizeof(real));
+    if (!posix_memalign((void **)&syn1, 128,
+                        (long long)vocab_size * layer1_size * sizeof(real))) {
+      perror("posix_memalign: ");
+      exit(1);
+    }
     if (syn1 == NULL) {
       printf("Memory allocation failed\n");
       exit(1);
@@ -457,8 +463,11 @@ void InitNet()
         syn1[a * layer1_size + b] = 0;
   }
   if (negative > 0) {
-    a = posix_memalign((void **)&syn1neg, 128,
-                       (long long)vocab_size * layer1_size * sizeof(real));
+    if (!posix_memalign((void **)&syn1neg, 128,
+                        (long long)vocab_size * layer1_size * sizeof(real))) {
+      perror("posix_memalign: ");
+      exit(1);
+    }
     if (syn1neg == NULL) {
       printf("Memory allocation failed\n");
       exit(1);
