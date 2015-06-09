@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
   }
   fclose(f);
   while (1) {
-    printf("Enter word or sentence (EXIT to break): ");
+    printf("Enter word or sentence (^D to exit): ");
     a = 0;
     while (1) {
       st1[a] = fgetc(stdin);
@@ -73,7 +73,8 @@ int main(int argc, char **argv) {
       }
       a++;
     }
-    if (!strcmp(st1, "EXIT")) break;
+    if (feof(stdin))
+      break;
 
     // Search the word
     for (b = 0; b < words; b++) if (!strcmp(&vocab[b * max_w], st1)) break;
