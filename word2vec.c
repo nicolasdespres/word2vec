@@ -192,7 +192,7 @@ void DestroyVocab()
   free(vocab);
 }
 
-// Sorts the vocabulary by frequency using word counts
+// Sorts the vocabulary by descending order of frequency using word counts
 void SortVocab()
 {
   int a, size;
@@ -310,8 +310,11 @@ void CreateBinaryTree()
     // The root is not written (node vocab_size * 2 - 2)
     for (b = 0; b < vocab_size * 2 - 2; b++) {
       if (binary) {
-        // In binary mode, just write the parent * sign
+        // In binary mode, just write the parent node id * sign
         // where sign is +1 or -1, depending on which child is used
+        // binary_size is a vector of 1 for left child and 0 for right side
+        // but we want +1 for left child and -1 for right child so we apply
+        // 2 * binary_side[b] - 1
         longint d = (2 * binary_side[b] - 1) * parent_node[b];
         fwrite(&d, sizeof(longint), 1, file);
       } else
