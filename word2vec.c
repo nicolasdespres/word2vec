@@ -223,11 +223,11 @@ void ReduceVocab() {
 void CreateBinaryTree() {
   long long a, b, i, min1i, min2i, pos1, pos2, point[MAX_CODE_LENGTH];
   char code[MAX_CODE_LENGTH];
-  long long *count = (long long *)calloc(vocab_size * 2 + 1, sizeof(long long));
-  long long *binary_side = (long long *)calloc(vocab_size * 2 + 1, sizeof(long long));
-  long long *parent_node = (long long *)calloc(vocab_size * 2 + 1, sizeof(long long));
+  long long *count = (long long *)calloc(vocab_size * 2 - 1, sizeof(long long));
+  long long *binary_side = (long long *)calloc(vocab_size * 2 - 1, sizeof(long long));
+  long long *parent_node = (long long *)calloc(vocab_size * 2 - 1, sizeof(long long));
   for (a = 0; a < vocab_size; a++) count[a] = vocab[a].cn;
-  for (a = vocab_size; a < vocab_size * 2; a++) count[a] = 1e15;
+  for (a = vocab_size; a < vocab_size * 2 - 1; a++) count[a] = 1e15;
   pos1 = vocab_size - 1;
   pos2 = vocab_size;
   // Following algorithm constructs the Huffman tree by adding one node at a time
