@@ -30,3 +30,5 @@ target_link_libraries(compute-accuracy ${LIBRARIES})
 
 add_executable(word-vector word-vector.c)
 target_link_libraries(word-vector ${LIBRARIES})
+
+install(TARGETS word2vec word-vector word2phrase word-analogy compute-accuracy DESTINATION bin)
