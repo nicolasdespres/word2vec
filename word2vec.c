@@ -155,7 +155,7 @@ int AddWordToVocab(char *word)
   if (length > MAX_STRING)
     length = MAX_STRING;
   vocab[vocab_size].word = (char *)calloc(length, sizeof(char));
-  strcpy(vocab[vocab_size].word, word);
+  strncpy(vocab[vocab_size].word, word, length);
   vocab[vocab_size].cn = 0;
   vocab_size++;
   // Reallocate memory if needed
