@@ -87,7 +87,7 @@ int main(int argc, char **argv)
     for (b = 0; b < words; b++)
       if (!strcmp(&vocab[b * max_w], st1))
         break;
-    if (b == -1) {
+    if (b == words) {
       printf("Out of dictionary word!\n");
       continue;
     }
