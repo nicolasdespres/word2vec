@@ -23,9 +23,9 @@ const long long max_w = 50;              // max length of vocabulary entries
 int main(int argc, char **argv) {
   FILE *f;
   char st1[max_size];
-  char file_name[max_size], st[100][max_size];
+  char file_name[max_size];
   float len;
-  long long words, size, a, b, cn, bi[100];
+  long long words, size, a, b;
   // char ch;
   float *M;
   char *vocab;
@@ -80,14 +80,6 @@ int main(int argc, char **argv) {
       printf("Out of dictionary word!\n");
       continue;
     }
-
-
-    for (a = 0; a < cn; a++) {
-      if (b == words) b = -1;
-      bi[a] = b;
-      printf("\nWord: %s  Position in vocabulary: %lld\n", st[a], bi[a]);
-    }
-    if (b == -1) continue;
 
     for (a = 0; a < size; a++) {
       printf("%f ", M[a + b * size]);
