@@ -29,7 +29,7 @@ In text or binary the first line contains the number of words and the dimension 
 
 As this is a binary tree, the classifier is represented as a list of parents (one for each node).
 
-- The *N* first nodes correpond to the leaves (the words)
+- The *N* first nodes correspond to the leaves (the words)
 - The *N* - 1 next nodes correspond to the inner nodes of the tree (the last node being the root)
 
 ### Binary
