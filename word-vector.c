@@ -17,10 +17,11 @@
 #include <math.h>
 #include <stdlib.h>
 
-const long long max_size = 2000;         // max length of strings
-const long long max_w = 50;              // max length of vocabulary entries
+const long long max_size = 2000;        // max length of strings
+const long long max_w = 50;     // max length of vocabulary entries
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   FILE *f;
   char st1[max_size];
   char file_name[max_size];
@@ -30,7 +31,8 @@ int main(int argc, char **argv) {
   float *M;
   char *vocab;
   if (argc < 2) {
-    printf("Usage: ./distance <FILE>\nwhere FILE contains word projections in the BINARY FORMAT\n");
+    printf
+        ("Usage: ./distance <FILE>\nwhere FILE contains word projections in the BINARY FORMAT\n");
     return 0;
   }
   strcpy(file_name, argv[1]);
@@ -45,7 +47,8 @@ int main(int argc, char **argv) {
   vocab = (char *)malloc((long long)words * max_w * sizeof(char));
   M = (float *)malloc((long long)words * (long long)size * sizeof(float));
   if (M == NULL) {
-    printf("Cannot allocate memory: %lld MB    %lld  %lld\n", (long long)words * size * sizeof(float) / 1048576, words, size);
+    printf("Cannot allocate memory: %lld MB    %lld  %lld\n",
+           (long long)words * size * sizeof(float) / 1048576, words, size);
     return -1;
   }
   // Read all the words
@@ -53,13 +56,17 @@ int main(int argc, char **argv) {
     a = 0;
     while (1) {
       vocab[b * max_w + a] = fgetc(f);
-      if (feof(f) || (vocab[b * max_w + a] == ' ')) break;
-      if ((a < max_w) && (vocab[b * max_w + a] != '\n')) a++;
+      if (feof(f) || (vocab[b * max_w + a] == ' '))
+        break;
+      if ((a < max_w) && (vocab[b * max_w + a] != '\n'))
+        a++;
     }
     vocab[b * max_w + a] = 0;
-    for (a = 0; a < size; a++) fread(&M[a + b * size], sizeof(float), 1, f);
+    for (a = 0; a < size; a++)
+      fread(&M[a + b * size], sizeof(float), 1, f);
     len = 0;
-    for (a = 0; a < size; a++) len += M[a + b * size] * M[a + b * size];
+    for (a = 0; a < size; a++)
+      len += M[a + b * size] * M[a + b * size];
   }
   fclose(f);
   while (1) {
@@ -77,7 +84,9 @@ int main(int argc, char **argv) {
       break;
 
     // Search the word
-    for (b = 0; b < words; b++) if (!strcmp(&vocab[b * max_w], st1)) break;
+    for (b = 0; b < words; b++)
+      if (!strcmp(&vocab[b * max_w], st1))
+        break;
     if (b == -1) {
       printf("Out of dictionary word!\n");
       continue;
