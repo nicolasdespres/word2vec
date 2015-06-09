@@ -158,15 +158,9 @@ void DestroyVocab() {
   int a;
 
   for (a = 0; a < vocab_size; a++) {
-    if (vocab[a].word != NULL) {
-      free(vocab[a].word);
-    }
-    if (vocab[a].code != NULL) {
-      free(vocab[a].code);
-    }
-    if (vocab[a].point != NULL) {
-      free(vocab[a].point);
-    }
+    free(vocab[a].word);
+    free(vocab[a].code);
+    free(vocab[a].point);
   }
   free(vocab[vocab_size].word);
   free(vocab);
@@ -412,15 +406,9 @@ void InitNet() {
 }
 
 void DestroyNet() {
-  if (syn0 != NULL) {
-    free(syn0);
-  }
-  if (syn1 != NULL) {
-    free(syn1);
-  }
-  if (syn1neg != NULL) {
-    free(syn1neg);
-  }
+  free(syn0);
+  free(syn1);
+  free(syn1neg);
 }
 
 void *TrainModelThread(void *id) {
