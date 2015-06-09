@@ -6,7 +6,6 @@ project(word2vec)
 # CFLAGS = -lm -pthread -O3 -march=native -Wall -funroll-loops -Wno-unused-result
 
 find_package (Threads)
-find_package (MATH)
 
 IF(UNIX)
   set(MATH_LIB m)
