@@ -34,8 +34,8 @@ As this is a binary tree, the classifier is represented as a list of parents (on
 
 ### Binary
 
-- The list of parents (64 bits integers) for the 2 * *N* - 2  nodes of the tree (the root of the tree is not listed)
-- A list of *N* - 1 vectors (one for each inner node) of dimension *D*
+- The list of parents (64 bits integers) for the 2 * *N* - 2 inner nodes of the tree (the root of the tree is not listed)
+- A list of *N* vectors (one for each leave) of dimension *D*
 
 # Tools for computing distributed representation of words
 
